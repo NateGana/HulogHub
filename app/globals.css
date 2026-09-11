@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 158 64% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 158 64% 96%;
+    --accent-foreground: 158 64% 22%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 91%;
+    --input: 214 20% 88%;
+    --ring: 158 64% 30%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 30% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 222 26% 10%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 222 26% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 158 55% 45%;
+    --primary-foreground: 222 30% 7%;
+
+    --muted: 222 20% 15%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 158 40% 16%;
+    --accent-foreground: 158 55% 78%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 18% 18%;
+    --input: 222 18% 20%;
+    --ring: 158 55% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-muted;
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0px,
+      hsl(var(--accent)) 40px,
+      hsl(var(--muted)) 80px
+    );
+    background-size: 800px 100%;
+    animation: shimmer 1.6s infinite linear;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* thin scrollbar for tables/sidebars */
+.thin-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+}
